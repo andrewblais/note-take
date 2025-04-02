@@ -8,7 +8,7 @@ import pg from "pg";
 
 import formatDate from "./utils/formatDate.js";
 
-// cd G:/nowCoding/yu-web-dev/sec36React/AllSectionProjects/keeperApp/noteTake
+// cd G:/nowCoding/yu-web-dev/sec36React/AllSectionProjects/keeperApp/note-take
 
 // Load env variables:
 config();
