@@ -1,11 +1,13 @@
 import formatDate from "./formatDate";
-import Joke from "./Joke";
+import Quote from "./Quote";
 
 function Footer() {
     return (
         <footer>
-            <Joke />
-            <p>&copy; {formatDate("year")}</p>
+            <div className="footer-all">
+                <Quote />
+                <div className="footer-date">&copy; {formatDate("year")}</div>
+            </div>
         </footer>
     );
 }

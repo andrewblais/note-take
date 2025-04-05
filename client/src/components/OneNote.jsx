@@ -9,6 +9,9 @@ import Tooltip from "@mui/material/Tooltip";
 import axios from "axios";
 
 function OneNote(noteProps) {
+    const serverHost = import.meta.env.VITE_SERVER_HOST;
+    const serverPort = import.meta.env.VITE_SERVER_PORT;
+
     const [isEditing, setIsEditing] = useState(false);
     const [editedTitle, setEditedTitle] = useState(noteProps.noteTitle);
     const [editedContent, setEditedContent] = useState(noteProps.noteContent);
@@ -18,11 +21,8 @@ function OneNote(noteProps) {
     const handleSave = async () => {
         try {
             const updatedNote = { title: editedTitle, content: editedContent };
-            await axios.put(
-                `http://localhost:4000/edit/${noteProps.id}`,
-                updatedNote
-            );
-            const response = await axios.get("http://localhost:4000/");
+            await axios.put(`${serverHost}:${serverPort}/edit/${noteProps.id}`, updatedNote);
+            const response = await axios.get(`${serverHost}:${serverPort}/`);
             noteProps.setCurrentNotes(response.data);
             setIsEditing(false);
         } catch (error) {
@@ -44,8 +44,7 @@ function OneNote(noteProps) {
                     <input
                         className="note-title"
                         value={editedTitle}
-                        onChange={(e) => setEditedTitle(e.target.value)}
-                    ></input>
+                        onChange={(e) => setEditedTitle(e.target.value)}></input>
                     <textarea
                         className="note-content"
                         value={editedContent}
@@ -78,8 +77,7 @@ function OneNote(noteProps) {
                         className="button-left"
                         onClick={() => {
                             noteProps.deleteClick(noteProps.id);
-                        }}
-                    >
+                        }}>
                         <Tooltip title="Delete Note">
                             <DeleteOutlineIcon />
                         </Tooltip>

@@ -13,7 +13,7 @@ function RadioSortButtons(buttonsProps) {
     return (
         <>
             <div
-                className="sort-by btn-group"
+                className="btn-group"
                 role="group"
                 aria-label="Radio buttons toggle sort order by date or alphabetically."
             >

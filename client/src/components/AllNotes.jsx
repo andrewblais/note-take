@@ -3,23 +3,22 @@ import axios from "axios";
 import OneNote from "./OneNote";
 
 function AllNotes(allNotesProps) {
+    const serverHost = import.meta.env.VITE_SERVER_HOST;
+    const serverPort = import.meta.env.VITE_SERVER_PORT;
+
     async function deleteNote(id) {
-        const noteToDelete = allNotesProps.currentNotes.find(
-            (note) => note.id === id
-        );
+        const noteToDelete = allNotesProps.currentNotes.find((note) => note.id === id);
 
         if (!noteToDelete) return alert("Note not found?!");
 
         const noteTitle = noteToDelete.note_title;
         const noteContent = noteToDelete.note_content.slice(0, 10);
-        const confirmDelete = window.confirm(
-            `Delete "${noteTitle}": ${noteContent}...?`
-        );
+        const confirmDelete = window.confirm(`Delete "${noteTitle}": ${noteContent}...?`);
 
         if (confirmDelete) {
             try {
                 const serverResponse = await axios.delete(
-                    `http://localhost:4000/delete/${id}`
+                    `${serverHost}:${serverPort}/delete/${id}`
                 );
                 allNotesProps.setCurrentNotes(serverResponse.data);
             } catch (error) {
