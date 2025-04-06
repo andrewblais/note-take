@@ -7,6 +7,7 @@
 
 a {
     text-decoration: none;
+    color: peachpuff;
 }
 
 body {
@@ -263,6 +264,13 @@ html {
     font-style: italic;
     font-weight: 400;
     color: peachpuff;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0 auto 1rem;
 }
 
 .footer-quote {

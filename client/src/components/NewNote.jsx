@@ -128,21 +128,21 @@ function NewNote(newNoteProps) {
                                 });
                                 setNewNoteObject({ title: "", content: "" }), setZoomIn(false);
                             }}>
-                            <Tooltip title="Save Note">
+                            <Tooltip title="Save Typed Note">
                                 <AddIcon />
                             </Tooltip>
                         </Fab>
                     </Zoom>
                     <Zoom in={zoomIn} timeout={{ enter: 500, exit: 1 }}>
                         <Fab className="add-button button-left" onClick={handleJokeNote}>
-                            <Tooltip title="Save icanhazdadjoke.com Joke">
+                            <Tooltip title="Save Joke Note">
                                 <FontAwesomeIcon icon={faFaceSmileWink} fontSize="1.25rem" />
                             </Tooltip>
                         </Fab>
                     </Zoom>
                     <Zoom in={zoomIn} timeout={{ enter: 500, exit: 1 }}>
                         <Fab className="add-button button-middle" onClick={handleQuoteNote}>
-                            <Tooltip title="Save favqs.com Quote">
+                            <Tooltip title="Save Quote Note">
                                 <FontAwesomeIcon icon={faQuoteLeft} fontSize="1.25rem" />
                             </Tooltip>
                         </Fab>

@@ -8,7 +8,7 @@ import pg from "pg";
 
 import formatDate from "./utils/formatDate.js";
 
-// cd G:/nowCoding/yu-web-dev/sec36React/AllSectionProjects/keeperApp/note-take
+// cd /g/nowGitRepos/note-take 
 
 // Load env variables:
 config();
@@ -155,18 +155,16 @@ app.get("/quote", async (req, res) => {
             attempts++;
             try {
                 const response = await axios.get(quoteURL, {
-                    // headers: {
-                    //     Authorization: `Token token="${quoteToken}"`,
-                    // },
+                    headers: {
+                        Authorization: `Token token="${quoteToken}"`,
+                    },
                 });
-
                 if (response.status !== 200) {
                     console.log(
                         `Quote request attempt ${attempts}: Bad status code ${response.status}`
                     );
                     continue;
                 }
-
                 const { body, author, favorites_count, upvotes_count, downvotes_count } =
                     response.data.quote;
 
@@ -174,7 +172,6 @@ app.get("/quote", async (req, res) => {
                     console.log(`Quote request attempt ${attempts}: No title or author.`);
                     continue;
                 }
-
                 if ((favorites_count < 2 && upvotes_count < 2) || downvotes_count > 2) {
                     console.log(`Attempt ${attempts}: Quote doesn't meet criteria.`);
                     continue;
