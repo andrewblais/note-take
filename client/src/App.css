@@ -1,4 +1,6 @@
-/* HTML ELEMENTS (ALPHABETICAL) */
+/* * * * * * * * * * * * * * * */
+/* BASE ELEMENTS: ALPHABETICAL */
+/* * * * * * * * * * * * * * * */
 * {
     padding: 0;
     margin: 0;
@@ -69,9 +71,9 @@ html {
     font-family: "Hind Mysuru", Arial, Helvetica, sans-serif;
 }
 
-/* * * * * * * * * * * * * * * * */
-/* EVERTHING ELSE (ALPHABETICAL) */
-/* * * * * * * * * * * * * * * * */
+/* * * * * * * *  * * * * * * * * */
+/* CUSTOM CLASSES — Alphabetical: */
+/* * * * * * * *  * * * * * * * * */
 .btn {
     --bs-btn-font-size: 0.85rem;
     font-style: italic;

@@ -8,13 +8,17 @@ import AllNotes from "./components/AllNotes";
 import RadioSortButtons from "./components/RadioSortButtons";
 import DeleteAllButton from "./components/DeleteAllButton";
 
-// cd G:/nowGitRepos/note-take
-
 function App() {
+    // State to hold notes currently displayed in the UI:
     const [currentNotes, setCurrentNotes] = useState([]);
+
+    // Read environment variables for server configuration:
     const serverHost = import.meta.env.VITE_SERVER_HOST;
     const serverPort = import.meta.env.VITE_SERVER_PORT;
 
+    /**
+     * Fetches notes from the database and sets local state.
+     */
     const notesFromDB = async () => {
         try {
             const serverResponse = await axios.get(`${serverHost}:${serverPort}`);
@@ -24,10 +28,16 @@ function App() {
         }
     };
 
+    // Runs once when the component mounts:
     useEffect(() => {
         notesFromDB();
-    }, []); // Empty dependency assures runs only once
+    }, []); // Empty `[]` dependency assures runs only once
 
+    /**
+     * Adds a new note via POST request and updates state.
+     * @param {Event} event - The form submission event
+     * @param {Object} newNote - New note data to be added
+     */
     const addNewNote = async (event, newNote) => {
         try {
             const serverResponse = await axios.post(`${serverHost}:${serverPort}/add`, newNote, {
@@ -40,6 +50,10 @@ function App() {
         }
     };
 
+    /**
+     * Sorts the current notes array in state based on selected option.
+     * @param {Event} event - The change event from radio buttons
+     */
     function sortNotes(event) {
         const sortValue = event.target.value;
         setCurrentNotes((prevArr) => {
@@ -58,6 +72,10 @@ function App() {
             return arrayToSort;
         });
     }
+
+    /**
+     * Deletes all notes from the database after confirmation.
+     */
     const deleteAllNotes = async () => {
         const confirmDelete = window.confirm("Delete All Notes?");
         if (confirmDelete) {
@@ -71,6 +89,7 @@ function App() {
         }
     };
 
+    // Component structure:
     return (
         <>
             <Header />

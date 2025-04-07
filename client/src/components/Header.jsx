@@ -1,3 +1,5 @@
+// Header component with app title and current date
+
 import formatDate from "./formatDate";
 
 function Header() {

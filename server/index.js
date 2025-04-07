@@ -1,4 +1,4 @@
-// Import necessary libraries for the server:
+// --- IMPORTS AND CONFIG ---
 import axios from "axios";
 import bodyParser from "body-parser";
 import cors from "cors";
@@ -8,28 +8,26 @@ import pg from "pg";
 
 import formatDate from "./utils/formatDate.js";
 
-// cd /g/nowGitRepos/note-take 
-
-// Load env variables:
+// Load environment variables from .env file:
 config();
 
-// Create Express instance:
+// --- INITIALIZE APP ---
 const app = express();
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Specify ports:
+// --- SERVER AND CLIENT CONFIGURATION ---
 const serverPort = process.env.SERVER_PORT;
 const serverHost = process.env.SERVER_HOST;
 const clientHost = process.env.CLIENT_HOST;
 const clientPort = process.env.CLIENT_PORT;
 
-// External API data:
+// External API Keys & URLs
 const jokeAPI = process.env.JOKE_API;
 const quoteToken = process.env.FAVQS_TOKEN;
 const quoteURL = process.env.FAVQS_URL;
 
-// Enable CORS for all routes:
+// Enable Cross-Origin Resource Sharing (CORS)
 app.use(
     cors({
         origin: `${clientHost}:${clientPort}`,
@@ -38,8 +36,7 @@ app.use(
     })
 );
 
-// Configure PostgreSQL database connection.
-//  Ensure pgAdmin 4 is running locally:
+// --- DATABASE CONNECTION ---
 const db = new pg.Client({
     user: process.env.DB_USER,
     host: process.env.DB_HOST,
@@ -50,11 +47,12 @@ const db = new pg.Client({
 
 db.connect();
 
-// // DATABASE ROUTES...
-// Basic route:
+// --- ROUTES ---
+
+// Fetch all notes from DB:
 app.get("/", async (req, res) => {
     try {
-        const dbQuery = await db.query("SELECT * from note_take ORDER by id DESC");
+        const dbQuery = await db.query("SELECT * from notes ORDER by id DESC");
         console.log("Successfully served notes from database.");
         res.json(dbQuery.rows); // Serve notes to frontend
     } catch (error) {
@@ -63,16 +61,16 @@ app.get("/", async (req, res) => {
     }
 });
 
-// Route to add notes:
+// Add a new note to DB:
 app.post("/add", async (req, res) => {
     const { title, content, date } = req.body;
     try {
         await db.query(
-            "INSERT INTO note_take (note_title, note_date, note_content) VALUES ($1, $2, $3)",
+            "INSERT INTO notes (note_title, note_date, note_content) VALUES ($1, $2, $3)",
             [title.trim(), date, content.trim()]
         );
         console.log("Successfully added note to database.");
-        const allNotes = await db.query("SELECT * from note_take ORDER by id DESC");
+        const allNotes = await db.query("SELECT * from notes ORDER by id DESC");
         res.json(allNotes.rows);
     } catch (error) {
         console.error("POST '/add' error:", error);
@@ -80,14 +78,14 @@ app.post("/add", async (req, res) => {
     }
 });
 
-// Route to delete a note:
+// Delete note by ID:
 app.delete("/delete/:id", async (req, res) => {
     const noteID = parseInt(req.params.id);
     try {
-        await db.query("DELETE FROM note_take WHERE id = ($1)", [noteID]);
+        await db.query("DELETE FROM notes WHERE id = ($1)", [noteID]);
         console.log(`Deleted note with ID ${noteID}.`);
         console.log("Note deleted from DB.");
-        const allNotes = await db.query("SELECT * from note_take ORDER by id DESC");
+        const allNotes = await db.query("SELECT * from notes ORDER by id DESC");
         res.json(allNotes.rows);
         // res.status(200).json({ message: "Note deleted from DB." });
     } catch (error) {
@@ -96,12 +94,12 @@ app.delete("/delete/:id", async (req, res) => {
     }
 });
 
-// Route to delete all notes:
+// Delete all notes from DB:
 app.delete("/delete-all", async (req, res) => {
     try {
-        await db.query("DELETE FROM note_take");
+        await db.query("DELETE FROM notes");
         console.log(`Deleted all notes!`);
-        await db.query("SELECT * from note_take ORDER by id DESC");
+        await db.query("SELECT * from notes ORDER by id DESC");
         res.status(200).json({ message: "All notes deleted from DB." });
     } catch (error) {
         console.error("DELETE '/delete-all' error:", error);
@@ -109,17 +107,18 @@ app.delete("/delete-all", async (req, res) => {
     }
 });
 
+// Edit/update an existing note:
 app.put("/edit/:id", async (req, res) => {
     const noteID = parseInt(req.params.id);
     const { title, content } = req.body;
     const date = formatDate("abbr");
     try {
         await db.query(
-            "UPDATE note_take SET note_title = $1, note_content = $2, note_date = $3 WHERE id = $4",
+            "UPDATE notes SET note_title = $1, note_content = $2, note_date = $3 WHERE id = $4",
             [title.trim(), content.trim(), date, noteID]
         );
         console.log("Successfully edited/updated note in DB.");
-        const allNotes = await db.query("SELECT * from note_take ORDER by id DESC");
+        const allNotes = await db.query("SELECT * from notes ORDER by id DESC");
         res.json(allNotes.rows);
     } catch (error) {
         console.error("PUT '/edit' error:", error);
@@ -127,8 +126,9 @@ app.put("/edit/:id", async (req, res) => {
     }
 });
 
-// // EXTERNAL API ROUTES:
-// Route to get a joke:
+// --- EXTERNAL APIs ---
+
+// Fetch a joke from external API:
 app.get("/joke", async (req, res) => {
     try {
         const response = await axios.get(`${jokeAPI}`, {
@@ -144,7 +144,7 @@ app.get("/joke", async (req, res) => {
     }
 });
 
-// Route to get a quote:
+// Fetch a quote with filtering (avoid low-quality ones):
 app.get("/quote", async (req, res) => {
     try {
         const MAX_ATTEMPTS = 5;
@@ -168,6 +168,7 @@ app.get("/quote", async (req, res) => {
                 const { body, author, favorites_count, upvotes_count, downvotes_count } =
                     response.data.quote;
 
+                // Skip quotes with missing info or poor ratings:
                 if (!body || !author) {
                     console.log(`Quote request attempt ${attempts}: No title or author.`);
                     continue;
@@ -176,6 +177,8 @@ app.get("/quote", async (req, res) => {
                     console.log(`Attempt ${attempts}: Quote doesn't meet criteria.`);
                     continue;
                 }
+
+                // Acceptable quote found:
                 quoteData = response.data;
                 console.log("Successfully requested and served quote.");
                 break;
@@ -187,6 +190,8 @@ app.get("/quote", async (req, res) => {
                 continue;
             }
         }
+
+        // Send result or fallback:
         if (quoteData) {
             console.log(`Successful quote request after ${attempts} attempt(s)!`);
             res.json(quoteData);
@@ -202,5 +207,5 @@ app.get("/quote", async (req, res) => {
     }
 });
 
-// Lissten for incoming connections, make server accessible:
+// --- START SERVER ---
 app.listen(serverPort, () => console.log(`Server running on ${serverHost}:${serverPort}`));

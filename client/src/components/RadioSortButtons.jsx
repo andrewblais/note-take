@@ -1,12 +1,9 @@
+// Group of radio buttons for sorting notes
+
 import RadioSortButton from "./RadioSortButton";
 import Tooltip from "@mui/material/Tooltip";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faArrowDown,
-    faArrowUp,
-    faA,
-    faZ,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowDown, faArrowUp, faA, faZ } from "@fortawesome/free-solid-svg-icons";
 import { faClock } from "@fortawesome/free-regular-svg-icons";
 
 function RadioSortButtons(buttonsProps) {
@@ -15,8 +12,7 @@ function RadioSortButtons(buttonsProps) {
             <div
                 className="btn-group"
                 role="group"
-                aria-label="Radio buttons toggle sort order by date or alphabetically."
-            >
+                aria-label="Radio buttons toggle sort order by date or alphabetically.">
                 <RadioSortButton
                     identifier={"date-descending"}
                     onSort={buttonsProps.onSort}

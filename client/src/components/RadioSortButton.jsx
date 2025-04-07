@@ -1,3 +1,5 @@
+// Single radio button for sort selection
+
 function RadioSortButton(buttonProps) {
     return (
         <>
