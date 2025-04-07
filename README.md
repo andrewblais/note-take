@@ -6,13 +6,17 @@ My second Node.js/React project, created as capstone project for Angela Yu's [Th
 
 A web app which allows users to add notes and incorporates PostgreSQL database functionality asserted locally via _pgAdmin 4_.
 
-In addition to typing a new note/title, the user may click one of the [Material UI](https://mui.com/material-ui/) buttons to save a 'joke' or 'quote' note, which will query external APIs: https://icanhazdadjoke.com/api and https://favqs.com/api.
+In addition to typing a new note/title, the user may click one of the _Material UI_ buttons to save a 'joke' or 'quote' note, which will query external APIs.
+
+I made good use of Google, StackOverflow and ChatGPT for looking stuff up and troubleshooting. ChatGPT was especially helpful in providing guidance when I was stuck, and assisting with commenting.
 
 Notes, details, comments, docstrings coming soon...
 
 _If you have any corrections/suggestions, please let me know!_
 
-### **_Resources:_**
+### **_Main Resources:_**
+
+[**_Visual Studio Code_**](https://code.visualstudio.com/)
 
 [**_Node.js_**](https://nodejs.org)
 
@@ -20,7 +24,17 @@ _If you have any corrections/suggestions, please let me know!_
 
 [**_React_**](https://react.dev/)
 
+[**_Material UI_**](https://mui.com/material-ui/)
+
 [**_pgAdmin 4_**](https://www.pgadmin.org/)
+
+[**_Material UI_**](https://mui.com/material-ui/)
+
+[**_icanhazdadjoke API_**](https://icanhazdadjoke.com/api)
+
+[**_favqs API_**](https://favqs.com/api)
+
+[**_ChatGPT_**](https://chatgpt.com/)
 
 ### **_Screenshots:_**
 
@@ -370,6 +384,8 @@ Here's some interesting/challenging concepts that I encountered:
 -   Be careful what path is indicated to the CSS file both in the JSX imports and in the HTML file. It can be tricky, depending on the setup of the environment.
 
 -   You cannot add a class name directly to a custom component: ~~`<Note className="note">`~~. HTML attributes need to be applied to HTML elements.
+
+---
 
 <font size=2>
 
