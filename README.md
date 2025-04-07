@@ -16,35 +16,35 @@ _If you have any corrections/suggestions, please let me know!_
 
 ### **_Main Resources:_**
 
-[**_Visual Studio Code_**](https://code.visualstudio.com/)
+-   [**_Visual Studio Code_**](https://code.visualstudio.com/)
 
-[**_Node.js_**](https://nodejs.org)
+-   [**_Node.js_**](https://nodejs.org)
 
-[**_NVM_**](https://github.com/nvm-sh/nvm)
+-   [**_NVM_**](https://github.com/nvm-sh/nvm)
 
-[**_React_**](https://react.dev/)
+-   [**_React_**](https://react.dev/)
 
-[**_Material UI_**](https://mui.com/material-ui/)
+-   [**_Material UI_**](https://mui.com/material-ui/)
 
-[**_Font Awesome_**](https://fontawesome.com/)
+-   [**_Font Awesome_**](https://fontawesome.com/)
 
-[**_Bootstrap_**](https://getbootstrap.com/)
+-   [**_Bootstrap_**](https://getbootstrap.com/)
 
-[**_Google Fonts_**](https://fonts.google.com/)
+-   [**_Google Fonts_**](https://fonts.google.com/)
 
-[**_GIMP_**](https://www.gimp.org/)
+-   [**_GIMP_**](https://www.gimp.org/)
 
-[**_pgAdmin 4_**](https://www.pgadmin.org/)
+-   [**_pgAdmin 4_**](https://www.pgadmin.org/)
 
-[**_icanhazdadjoke API_**](https://icanhazdadjoke.com/api)
+-   [**_icanhazdadjoke API_**](https://icanhazdadjoke.com/api)
 
-[**_favqs API_**](https://favqs.com/api)
+-   [**_favqs API_**](https://favqs.com/api)
 
-[**_mdn_**](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+-   [**_mdn_**](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-[**_Stack Overflow_**](https://stackoverflow.com/)
+-   [**_Stack Overflow_**](https://stackoverflow.com/)
 
-[**_ChatGPT_**](https://chatgpt.com/)
+-   [**_ChatGPT_**](https://chatgpt.com/)
 
 ### **_Screenshots:_**
 
@@ -126,7 +126,7 @@ note-take
 
 ### **_Installation/Getting Started:_**
 
-Install Node.js, connecting functionality with [**_VS Code_**](https://code.visualstudio.com/).
+Install Node.js, connecting functionality with _VS Code_.
 
 <font size=2>
 
