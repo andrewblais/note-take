@@ -24,8 +24,6 @@ _If you have any corrections/suggestions, please let me know!_
 
 ### **_Screenshots:_**
 
-<font style="text-align: center;">
-
 #### **_Desktop (Firefox, Restore Down):_**
 
 ![desktop](./client/src/assets/images/desktop.png)
@@ -49,8 +47,6 @@ _If you have any corrections/suggestions, please let me know!_
 #### **_Sort Four Ways:_**
 
 ![sort](./client/src/assets/images/sort.png)
-
-</font>
 
 ### **_Project Structure:_**
 
