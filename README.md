@@ -26,13 +26,23 @@ _If you have any corrections/suggestions, please let me know!_
 
 [**_Material UI_**](https://mui.com/material-ui/)
 
-[**_pgAdmin 4_**](https://www.pgadmin.org/)
+[**_Font Awesome_**](https://fontawesome.com/)
 
-[**_Material UI_**](https://mui.com/material-ui/)
+[**_Bootstrap_**](https://getbootstrap.com/)
+
+[**_Google Fonts_**](https://fonts.google.com/)
+
+[**_GIMP_**](https://www.gimp.org/)
+
+[**_pgAdmin 4_**](https://www.pgadmin.org/)
 
 [**_icanhazdadjoke API_**](https://icanhazdadjoke.com/api)
 
 [**_favqs API_**](https://favqs.com/api)
+
+[**_mdn_**](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+
+[**_Stack Overflow_**](https://stackoverflow.com/)
 
 [**_ChatGPT_**](https://chatgpt.com/)
 
