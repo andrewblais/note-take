@@ -387,7 +387,7 @@ Here's some interesting/challenging concepts that I encountered:
 
 -   Okay to use `.js` instead of `.jsx` extension. This is a subject of debate in the developer community.
 
--   Components like `App()` are called a 'functional components'.
+-   Components like `App()` are called 'functional components'.
 
 -   HTML elements must always be lower case, custom components always PascalCase, so React can differentiate when you're trying to use custom React component vs. tapping into native HTML elements.
 
