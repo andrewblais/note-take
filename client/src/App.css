@@ -71,29 +71,14 @@ html {
     font-family: "Hind Mysuru", Arial, Helvetica, sans-serif;
 }
 
-/* * * * * * * *  * * * * * * * * */
-/* CUSTOM CLASSES — Alphabetical: */
-/* * * * * * * *  * * * * * * * * */
+/* * * * * * * ** ** ** * * * * * * * */
+/* CUSTOM CLASSES/IDs — Alphabetical: */
+/* * * * * * * ** ** ** * * * * * * * */
 .btn {
     --bs-btn-font-size: 0.85rem;
     font-style: italic;
     --bs-btn-padding-y: 0.6rem;
 }
-
-.btn-outline-primary {
-    --bs-btn-color: saddlebrown;
-    --bs-btn-border-color: saddlebrown;
-    --bs-btn-hover-bg: saddlebrown;
-    --bs-btn-hover-border-color: saddlebrown;
-    --bs-btn-active-bg: saddlebrown;
-    --bs-btn-bg: peachpuff;
-    --bs-btn-active-border-color: saddlebrown;
-    transition: 0.25s all ease;
-}
-/* 
-.btn-outline-primary:hover {
-    background: #c99868;
-    } */
 
 .btn-dumpster {
     --bs-btn-bg: peachpuff;
@@ -108,6 +93,17 @@ html {
     --bs-border-radius: 1.35rem;
 }
 
+.btn-outline-primary {
+    --bs-btn-color: saddlebrown;
+    --bs-btn-border-color: saddlebrown;
+    --bs-btn-hover-bg: saddlebrown;
+    --bs-btn-hover-border-color: saddlebrown;
+    --bs-btn-active-bg: saddlebrown;
+    --bs-btn-bg: peachpuff;
+    --bs-btn-active-border-color: saddlebrown;
+    transition: 0.25s all ease;
+}
+
 .buttons-top {
     display: flex;
     flex-direction: row;
@@ -118,6 +114,44 @@ html {
     width: 90%;
     margin: 10rem auto 0;
     height: 2.2rem;
+}
+
+.footer-all {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40vw;
+    margin: 0 auto 1rem;
+    font-size: 1.15rem;
+    font-style: italic;
+    font-weight: 400;
+    color: peachpuff;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0 auto 1rem;
+}
+
+.footer-quote {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0 auto 1rem;
+}
+
+.footer-quote a {
+    color: peachpuff;
+}
+
+.footer-quote p {
+    margin: 0 auto;
+}
+
+.hide-y {
+    overflow-y: hidden;
 }
 
 .note {
@@ -134,20 +168,35 @@ html {
     font-family: "Hind Mysuru", Arial, Helvetica, sans-serif;
 }
 
-@keyframes note-animation {
-    50% {
-        box-shadow: 0.5px 0.5px 0.65rem sienna;
-        scale: 101%;
-    }
+.note button:hover {
+    opacity: 1;
 }
 
-.note:hover {
-    animation: note-animation 23s linear infinite;
+.note .button-left {
+    opacity: 0.25;
+    position: absolute;
+    background: none;
+    left: 0.85rem;
+    bottom: 0.75rem;
+    color: sienna;
+    border: none;
+    font-size: 1.05rem;
+    cursor: pointer;
+    outline: none;
+    transition: 0.5s;
 }
-
-.note-content::placeholder,
-.note-title::placeholder {
-    color: #c99868;
+.note .button-middle {
+    opacity: 0.25;
+    position: absolute;
+    background: none;
+    left: 5rem;
+    bottom: 0.75rem;
+    color: sienna;
+    border: none;
+    font-size: 1.05rem;
+    cursor: pointer;
+    outline: none;
+    transition: 0.5s;
 }
 
 .note .button-right {
@@ -164,40 +213,20 @@ html {
     transition: 0.5s;
 }
 
-.note .button-left {
-    opacity: 0.25;
-    position: absolute;
-    background: none;
-    left: 0.85rem;
-    bottom: 0.75rem;
-    color: sienna;
-    border: none;
-    font-size: 1.05rem;
-    cursor: pointer;
-    outline: none;
-    transition: 0.5s;
+@keyframes note-animation {
+    50% {
+        box-shadow: 0.5px 0.5px 0.65rem sienna;
+        scale: 101%;
+    }
 }
 
-.note .button-middle {
-    opacity: 0.25;
-    position: absolute;
-    background: none;
-    left: 5rem;
-    bottom: 0.75rem;
-    color: sienna;
-    border: none;
-    font-size: 1.05rem;
-    cursor: pointer;
-    outline: none;
-    transition: 0.5s;
+.note:hover {
+    animation: note-animation 23s linear infinite;
 }
 
-.note button:hover {
-    opacity: 1;
-}
-
-.hide-y {
-    overflow-y: hidden;
+.note-content::placeholder,
+.note-title::placeholder {
+    color: #c99868;
 }
 
 .note-content {
@@ -251,43 +280,6 @@ html {
     column-gap: 2rem;
     margin: 0 auto 11.5rem;
     width: 100%;
-}
-
-.footer-all {
-    display: flex;
-    flex-direction: column;
-    /* display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 3fr 1fr; */
-    align-items: center;
-    width: 40vw;
-    margin: 0 auto 1rem;
-    font-size: 1.15rem;
-    font-style: italic;
-    font-weight: 400;
-    color: peachpuff;
-}
-
-.footer-links {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin: 0 auto 1rem;
-}
-
-.footer-quote {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin: 0 auto 1rem;
-}
-
-.footer-quote p {
-    margin: 0 auto;
-}
-
-.footer-quote a {
-    color: peachpuff;
 }
 
 .page-title {
