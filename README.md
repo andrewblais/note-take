@@ -245,6 +245,9 @@ _If you spot anything broken or unclear, feel free to open an issue or PR. Thank
 ---
 
 _Andrew Blais, Boston, Massachusetts_
-📖 Student of full-stack web development, machine learning, and software engineering  
-🏠 Boston, Massachusetts  
+
+📖 Student of full-stack web development, machine learning, and software engineering
+
+🏠 Boston, Massachusetts
+
 🔗 [GitHub](https://github.com/andrewblais) | [Portfolio](https://andrewblais.dev)
