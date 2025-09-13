@@ -47,5 +47,8 @@
     },
     "overrides": {
         "axios": "^1.12.1"
+    },
+    "engines": {
+        "node": ">=20 <25"
     }
 }
